@@ -1,4 +1,4 @@
-import LandingPage from '../pages/landing-page'
+import LandingPage from './landing-page'
 import ScrollToTop from '../components/ScrollToTop'
 
 export default function Home() {
