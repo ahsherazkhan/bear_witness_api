@@ -1,7 +1,12 @@
-import Icon from '../../../components/AppIcon';
+'use client'
+
 import React, { useState, useEffect } from 'react';
+import Icon from '../../../components/AppIcon';
 
 const ProblemSection = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [currentStat, setCurrentStat] = useState(0);
+
   const problemStats = [
     {
       icon: "TrendingUp",
@@ -67,10 +72,10 @@ const ProblemSection = () => {
       }, 2500);
       return () => clearInterval(interval);
     }
-  }, [isVisible]);
+  }, [isVisible, problemStats.length]);
 
   return (
-    <section className="py-20 bg-surface">
+    <section id="problem-section" className="py-20 bg-surface">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -168,67 +173,6 @@ const ProblemSection = () => {
               <Icon name="Users" size={32} color="#6b7280" className="mx-auto mb-3" />
               <div className="text-2xl font-bold text-gray-600 mb-2">3-5</div>
               <div className="text-sm text-muted-foreground">Team members needed</div>
-            </div>
-          </div>
-        </div>
-                <div className="text-center mb-16">
-          <h2 className={`text-4xl md:text-5xl font-bold text-white mb-6 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            The AI Content Crisis is
-            <span className="text-red-400"> Real</span>
-          </h2>
-          <p className={`text-xl text-gray-300 max-w-3xl mx-auto transform transition-all duration-1000 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            Artificial intelligence is flooding social media with fake content, threatening authenticity and trust across all industries.
-          </p>
-        </div>
-
-        {/* Animated Statistics */}
-        <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 transform transition-all duration-1000 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          {problemStats.map((stat, index) => (
-            <div
-              key={index}
-              className={`bg-gray-800 border border-gray-700 rounded-xl p-8 text-center transition-all duration-500 ${
-                currentStat === index ? 'scale-105 border-red-500 shadow-2xl shadow-red-500/20' : 'hover:border-gray-600'
-              }`}
-            >
-              <div className="flex justify-center mb-4">
-                <Icon
-                  name={stat.icon}
-                  size={48}
-                  className={`${stat.color} ${currentStat === index ? 'animate-pulse' : ''}`}
-                />
-              </div>
-              <div className={`text-4xl font-bold mb-2 ${stat.color}`}>
-                {stat.value}
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-2">
-                {stat.title}
-              </h3>
-              <p className="text-gray-400 text-sm">
-                {stat.description}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Call to Action */}
-        <div className={`text-center mt-16 transform transition-all duration-1000 delay-800 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <div className="bg-gradient-to-r from-gray-900 to-gray-800 border border-red-500/30 rounded-2xl p-8 max-w-4xl mx-auto">
-            <Icon name="AlertCircle" size={48} className="text-red-400 mx-auto mb-4" />
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Don't Let AI Content Destroy Your Credibility
-            </h3>
-            <p className="text-gray-300 mb-6">
-              Every day you wait, more fake content infiltrates your industry. Take action now to protect your brand's authenticity.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <div className="bg-gray-800 border border-gray-700 rounded-lg px-6 py-3">
-                <div className="text-red-400 font-bold text-lg">47,392</div>
-                <div className="text-gray-400 text-sm">Posts analyzed today</div>
-              </div>
-              <div className="bg-gray-800 border border-gray-700 rounded-lg px-6 py-3">
-                <div className="text-orange-400 font-bold text-lg">847,293</div>
-                <div className="text-gray-400 text-sm">AI content detected</div>
-              </div>
             </div>
           </div>
         </div>
