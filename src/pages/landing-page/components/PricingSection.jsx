@@ -3,56 +3,12 @@
 import React, { useState } from 'react';
 import Button from '../../../components/ui/Button';
 import Icon from '../../../components/AppIcon';
+import { pricingTiers } from '../../../constants/pricing-tier';
 
 const PricingSection = () => {
   const [billingCycle, setBillingCycle] = useState('monthly');
 
-  const pricingPlans = [
-    {
-      name: "Starter",
-      description: "Perfect for individual creators",
-      monthlyPrice: 29,
-      yearlyPrice: 24,
-      features: [
-        "1,000 posts per month",
-        "Real-time detection",
-        "Basic analytics",
-        "Email support",
-        "API access"
-      ],
-      popular: false
-    },
-    {
-      name: "Professional",
-      description: "Ideal for growing brands",
-      monthlyPrice: 99,
-      yearlyPrice: 79,
-      features: [
-        "10,000 posts per month",
-        "Advanced detection",
-        "Detailed analytics",
-        "Priority support",
-        "Team collaboration",
-        "Custom integrations"
-      ],
-      popular: true
-    },
-    {
-      name: "Enterprise",
-      description: "Custom solutions for large organizations",
-      monthlyPrice: "Custom",
-      yearlyPrice: "Custom",
-      features: [
-        "Unlimited posts",
-        "White-label solution",
-        "Dedicated support",
-        "Custom AI training",
-        "SLA guarantee",
-        "24/7 phone support"
-      ],
-      popular: false
-    }
-  ];
+  const pricingPlans = Object.values(pricingTiers);
 
   const scrollToTrial = () => {
     const element = document.getElementById('trial-signup');
